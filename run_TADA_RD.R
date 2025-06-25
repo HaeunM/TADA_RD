@@ -1,7 +1,7 @@
 
 # Original code : Haeun Moon (2025-06-25)
 
-library(data.table); require(dplyr); require(openxlsx); require(ebmc)
+require(dplyr); require(openxlsx); require(ebmc)
 
 ### Change to working directory where the folder was cloned
 
@@ -16,8 +16,7 @@ genetable_info=read.xlsx("data/genetable_info.xlsx")
 
 ### denovo + inherited data, ASC published (Fu et al.)
 
-Fu_table= 'data/fu_supplementary_table.xlsx'
-asc_family_ptv <- read.xlsx(Fu_table, sheet=5)%>%select(gene_id, dn.ptv, dn.ptv.sib, in.t.ptv, in.u.ptv)
+asc_family_ptv <- read.xlsx("data/fu_suppl_table5.xlsx")%>%select(gene_id, dn.ptv, dn.ptv.sib, in.t.ptv, in.u.ptv)
 n_prob_asc <- 7287+288; n_sib_asc <- 2348+11
 genetable_d=left_join(genetable_info, asc_family_ptv, by=c("Gene_ID"="gene_id"))
 
